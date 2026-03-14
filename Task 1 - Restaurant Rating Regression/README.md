@@ -1,109 +1,97 @@
 # 🍽️ Restaurant Rating Prediction
 
-## 📌 Objective
+## 📌 Project Overview
+This project focuses on building a **machine learning regression model** to predict the **aggregate rating of restaurants** based on various features such as location, cost, services, votes, and cuisine types.
 
-The objective of this project is to build a machine learning regression model that predicts the **aggregate rating** of a restaurant based on various features such as location, cost, services, votes, and cuisine types.
+The goal is to analyze restaurant-related data and develop a model that can estimate ratings using structured data.
 
 ---
 
-## 📊 Dataset Overview
+# 🎯 Objective
+Build a machine learning model that predicts the **aggregate rating of a restaurant** based on its available features.
 
-The dataset contains restaurant-level information including:
+---
 
-- Geographical details (Latitude, Longitude, Country Code, City)
-- Pricing information (Average Cost for Two, Price Range, Currency)
-- Service features (Table Booking, Online Delivery, Delivery Status)
-- Cuisine types
-- Customer engagement (Votes)
+# 📊 Dataset Description
+The dataset contains information about restaurants, including:
 
-**Target Variable:**  
+| Feature Category | Examples |
+|------------------|----------|
+| Location Data | City, Country Code, Latitude, Longitude |
+| Pricing Data | Average Cost for Two, Price Range, Currency |
+| Services | Online Delivery, Table Booking |
+| Engagement | Votes |
+| Cuisine | Multiple cuisine types per restaurant |
+
+### 🎯 Target Variable
 `Aggregate rating`
 
 ---
 
-## 🧹 Data Preprocessing Steps
+# 🧹 Data Preprocessing
 
-The following preprocessing steps were performed:
+Several preprocessing steps were performed to clean and prepare the dataset:
 
-1. **Removed unrated restaurants** (Aggregate rating = 0).
-2. Dropped irrelevant and leakage columns:
-   - Restaurant ID
-   - Restaurant Name
-   - Address details
-   - Rating text and color
-3. Handled missing values in the `Cuisines` column.
-4. Converted binary categorical variables (`Yes/No`) into numeric format (1/0).
-5. Applied one-hot encoding to:
-   - City
-   - Currency
-6. Performed feature engineering on the `Cuisines` column:
-   - Split multiple cuisines per restaurant
-   - Created dummy variables for each cuisine type
+### 1️⃣ Remove Invalid Data
+Restaurants with **no ratings (rating = 0)** were removed to avoid misleading training data.
 
----
+### 2️⃣ Drop Irrelevant Columns
+The following columns were removed because they either contained identifiers or information derived from the rating:
 
-## 🤖 Model Selection
+- Restaurant ID
+- Restaurant Name
+- Address
+- Locality
+- Locality Verbose
+- Rating Color
+- Rating Text
+- Switch to Order Menu
 
-A **Random Forest Regressor** was selected due to:
+### 3️⃣ Handle Missing Values
+Missing values in the **Cuisines column** were filled using the most frequent cuisine.
 
-- Its ability to capture non-linear relationships
-- Strong performance on structured datasets
-- Reduced risk of overfitting compared to a single decision tree
+### 4️⃣ Encode Categorical Variables
+Binary categorical columns were converted into numeric format:
 
----
+| Original Value | Encoded Value |
+|----------------|---------------|
+| Yes | 1 |
+| No | 0 |
 
-## ⚙️ Hyperparameter Tuning
+### 5️⃣ One-Hot Encoding
+The following categorical columns were transformed using **One-Hot Encoding**:
 
-The model was improved using the following configuration:
-
-- `n_estimators = 300`
-- `max_depth = 20`
-- `min_samples_split = 5`
-- `random_state = 42`
+- City
+- Currency
 
 ---
 
-## 📈 Model Evaluation
+# 🍜 Cuisine Feature Engineering
 
-The model was evaluated using:
+Restaurants can have **multiple cuisines** (e.g., *Italian, Pizza*).  
+To properly use this information:
 
-- **Root Mean Squared Error (RMSE)**
-- **R² Score**
+1. The cuisine column was split into multiple values.
+2. Each cuisine type was converted into a **binary feature**.
+3. Dummy variables were created for each cuisine.
 
-### ✅ Final Results
-
-- **RMSE:** 0.3240  
-- **R² Score:** 0.6606  
-
----
-
-## 🔎 Feature Importance Insights
-
-Top influential features include:
-
-- Number of Votes
-- Geographical location (Longitude & Latitude)
-- Average Cost for Two
-- Specific cuisine types (e.g., Chinese, North Indian, Pizza, Continental)
-
-This indicates that customer engagement, location, pricing, and cuisine type significantly influence restaurant ratings.
+This increased the feature space and allowed the model to understand the influence of different cuisines on restaurant ratings.
 
 ---
 
-## 🏁 Conclusion
+# 🤖 Machine Learning Model
 
-The final model explains approximately **66% of the variation** in restaurant ratings, demonstrating strong predictive performance for a regression-based internship task.
+### Model Used
+**Random Forest Regressor**
 
-Further improvements could include:
-- Advanced hyperparameter tuning
-- Cross-validation
-- Additional feature engineering techniques
+Random Forest was selected because it:
+
+- Handles **non-linear relationships**
+- Works well with **structured datasets**
+- Reduces risk of **overfitting**
 
 ---
 
-## 🛠️ Technologies Used
+# ⚙️ Hyperparameter Configuration
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
+The model was tuned using the following parameters:
