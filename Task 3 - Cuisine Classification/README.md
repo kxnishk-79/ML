@@ -10,12 +10,12 @@ Develop a machine learning model to classify restaurants based on their cuisines
 
 This project predicts the **primary cuisine** of a restaurant using features like:
 
-- 🏷️ Restaurant Name
-- 📍 Location
-- 💰 Cost
-- ⭐ Rating
-- 👍 Votes
-- 💲 Price Range
+* 🏷️ Restaurant Name
+* 📍 Location
+* 💰 Cost
+* ⭐ Rating
+* 👍 Votes
+* 💲 Price Range
 
 ---
 
@@ -23,32 +23,32 @@ This project predicts the **primary cuisine** of a restaurant using features lik
 
 ### 🔹 1. Data Preprocessing
 
-- Removed missing values
-- Selected relevant columns
-- Extracted primary cuisine from multiple labels
+* Removed missing values
+* Selected relevant columns
+* Extracted primary cuisine from multiple labels
 
 ---
 
 ### 🔹 2. Feature Engineering
 
-- **TF-IDF** for restaurant names (text processing)
-- **One-Hot Encoding** for location
-- **Standard Scaling** for numerical features
+* **TF-IDF** for restaurant names (text processing)
+* **One-Hot Encoding** for location
+* **Standard Scaling** for numerical features
 
 ---
 
 ### 🔹 3. Handling Class Imbalance
 
-- Filtered out rare cuisines
-- Reduced noise and improved model learning
+* Filtered out rare cuisines
+* Reduced noise and improved model learning
 
 ---
 
 ### 🔹 4. Model Building
 
-- Used **Logistic Regression**
-- Implemented using a **Pipeline**
-- Combined preprocessing + model into a single workflow
+* Used **Logistic Regression**
+* Implemented using a **Pipeline**
+* Combined preprocessing + model into a single workflow
 
 ---
 
@@ -64,29 +64,32 @@ This project predicts the **primary cuisine** of a restaurant using features lik
 
 ## 📈 Key Insights
 
-- ✅ Strong performance on:
-  - North Indian
-  - Pizza
-  - Bakery
-  - Ice Cream
+* ✅ Strong performance on:
 
-- ⚠️ Weak performance on:
-  - Continental
-  - Desserts
-  - Mughlai
+  * North Indian
+  * Pizza
+  * Bakery
+  * Ice Cream
 
-- 📉 Reason:
-  - Class imbalance
-  - Overlapping cuisine features
+* ⚠️ Weak performance on:
+
+  * Continental
+  * Desserts
+  * Mughlai
+
+* 📉 Reason:
+
+  * Class imbalance
+  * Overlapping cuisine features
 
 ---
 
 ## 🚀 Improvements Made
 
-- Increased accuracy from **40% → 61%**
-- Added meaningful features (rating, votes, price range)
-- Applied TF-IDF with n-grams
-- Switched to a more suitable model (Logistic Regression)
+* Added meaningful features (rating, votes, price range)
+* Applied TF-IDF with n-grams
+* Used structured preprocessing pipeline
+* Selected a model suitable for text-based classification
 
 ---
 
